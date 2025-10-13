@@ -5,5 +5,8 @@ public class Cliente {
     ///cada cliente tiene maximo 10 vehiculos
     private Vehiculo[] vehiculos = new Vehiculo[10];
     private int numVehiculo;
+
+    
+    
     
 }
