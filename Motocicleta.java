@@ -2,7 +2,8 @@ public class Motocicleta extends Vehiculo{
     protected int cilindrada;
     protected String tipoCadena;
 
-    public Motocicleta(int cilindrada, String tipoCadena){
+    public Motocicleta(int cilindrada, String tipoCadena,String marca, String modelo, String placa,Cliente cliente){
+        super(marca,modelo,placa,cliente);
         this.cilindrada = cilindrada;
         this.tipoCadena = tipoCadena;
 
@@ -24,4 +25,9 @@ public class Motocicleta extends Vehiculo{
         this.tipoCadena = tipoCadena;
     }
     
+    @Override
+    public String toString(){
+        return super.toString() + " CILINDRADA: "+cilindrada+ " TIPO DE CADENA: "+tipoCadena +"";
+    }
+
 }

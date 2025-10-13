@@ -3,7 +3,8 @@ public class Auto extends Vehiculo{
     protected String tipoCombustible;
     protected String tipoMotor;
 
-    public Auto (int numPuertas, String tipoCombustible, String tipoMotor){
+    public Auto (int numPuertas, String tipoCombustible, String tipoMotor,String marca, String modelo, String placa,Cliente cliente){
+        super(marca,modelo,placa,cliente);
         this.tipoCombustible = tipoCombustible;
         this. tipoMotor = tipoMotor;
         this.numPuertas = numPuertas;
@@ -34,5 +35,8 @@ public class Auto extends Vehiculo{
         this.tipoMotor = tipoMotor;
     }
 
-    
+    @Override
+    public String toString(){
+        return super.toString() + " NUMERO DE PUERTAS: "+numPuertas+ " TIPO DE COMBUSTIBLE: "+tipoCombustible +"";
+    }
 }

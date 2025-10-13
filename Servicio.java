@@ -1,3 +1,5 @@
+import javax.crypto.spec.DESKeySpec;
+
 public class Servicio {
     private String tipo;
     private float costo;
@@ -53,6 +55,13 @@ public class Servicio {
 
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
+    }
+
+    //generarinfromacion del sevicio
+    @Override
+    public String toString(){
+
+        return " FECHA"+fecha+ "\nTIPO DE SERVICIO: "+tipo+"\nDESCRIPCION: "+descripcion+"\nCOSTO"+costo;
     }
 
     
