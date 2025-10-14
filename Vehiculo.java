@@ -48,6 +48,11 @@ public class Vehiculo {
         this.cliente = cliente;
     }
 
+    @Override
+    public String toString(){
+        return "MARCA: "+marca+" MODELO: "+modelo+" PLACA: "+placa+"\n";
+    }
+
     
     
 }

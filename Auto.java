@@ -10,6 +10,7 @@ public class Auto extends Vehiculo{
         this.numPuertas = numPuertas;
 
     }
+    
 
     public int getNumPuertas() {
         return this.numPuertas;

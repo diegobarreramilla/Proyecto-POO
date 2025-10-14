@@ -50,6 +50,15 @@ public class Cliente {
 
     } 
 
+    public String mostrarVehiculos(){
+        String info = "";
+
+        for(int i =0; i<numVehiculo;i++){
+            info += vehiculos[i].toString();
+        }
+        return info;
+    }
+
     @Override
     public String toString(){
         return "NOMBRE: "+ nombre+" TELEFONO: "+telefono+" CORREO: " +correo+ " VEHICULOS REGiSTRADOS: "+numVehiculo+"\n" ;
