@@ -119,7 +119,7 @@ public class Taller {
 		String marca;
 		String modelo;
 		String placa;
-  
+        
 		int opc = Integer.parseInt(JOptionPane.showInputDialog(null,"[1] Auto\n [2] Motocicleta\n"));
 	
 

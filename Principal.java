@@ -20,8 +20,7 @@ public class Principal {
             "[3] CREAR CLIENTE NUEVO\n"+
             "[4] AGREGAR NUEVO VEHICULO A CLIENTE\n"+
 			"[5] VER LOS VEHICULOS DEL TALLER\n"+
-            "[6] ASIGNAR SERVICIO A VEHICULO EN ESPECIFICO\n"+
-            "[7] GENERAR TICKET DE SERVICIO\n"+  //FALTA IMPLEMENTAR ESTA, NO SUPE BIEN QUE DEBE HACER
+            "[6] ASIGNAR SERVICIO A VEHICULO EN ESPECIFICO\n"+ 
             "[0] SALIR "));
 
 
@@ -42,6 +41,7 @@ public class Principal {
                 break;
 				//AGREGAR VEHICULO A UN CLIENTE
                 case 4:
+
 					agregraVehiculoCliente();
                 break;
 				//DESPLEGAR LA LISTA DE VEHICULOS EN EL TALLER
