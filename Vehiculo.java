@@ -4,15 +4,17 @@ public class Vehiculo {
     protected String placa;
     //// cliente al que pertenece
     protected Cliente cliente;
-    protected Servicio[] servicios = new Servicio[100];
+    protected Servicio[] servicios;
+	protected int numServicios;
 
     public Vehiculo(String marca, String modelo, String placa,Cliente cliente){
         this.marca = marca;
         this.modelo = modelo;
         this.placa = placa;
         this.cliente = cliente;
-        
-
+		
+		servicios = new Servicio[100];
+        numServicios = 0;
     }
 
     public String getMarca() {
@@ -48,11 +50,14 @@ public class Vehiculo {
         this.cliente = cliente;
     }
 
+	//HICE ESTA FUNCION PARA AGREGAR SERVICIOS A LA LISTA DE SERVICIOS DEL VEHICULO
+	public void agregarServicio(Servicio s){
+		servicios[numServicios++] = s;
+	}
+
     @Override
     public String toString(){
-        return "MARCA: "+marca+" MODELO: "+modelo+" PLACA: "+placa+"\n";
+        return "\nDUEÑO"+cliente.getNombre()+"\nMARCA: "+marca+"\nMODELO: "+modelo+"\nPLACA: "+placa+"\n";
     }
-
-    
     
 }

@@ -37,6 +37,13 @@ public class Cliente {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+	
+	public int getNumVehiculos() { return numVehiculo;}
+	
+	//AGREGUE ESTA FUNCION PARA RETORNAR ALGUN VEHICULO DE LA LISTA DE VEHICULOS
+	public Vehiculo getVehiculo(int id){
+		return vehiculos[id];
+	}
 
     ///agregar vehiculo  la lista de vehiculos de cliente
     public void agregarVehiculo(Vehiculo vehiculo){
@@ -54,14 +61,14 @@ public class Cliente {
         String info = "";
 
         for(int i =0; i<numVehiculo;i++){
-            info += vehiculos[i].toString();
+            info += vehiculos[i].getModelo();
         }
         return info;
     }
 
     @Override
     public String toString(){
-        return "NOMBRE: "+ nombre+" TELEFONO: "+telefono+" CORREO: " +correo+ " VEHICULOS REGiSTRADOS: "+numVehiculo+"\n" ;
+        return "\nNombre: "+ nombre+"\nTelefono: "+telefono+"\nCorreo: " +correo+ "\nVehiculos registrados: "+numVehiculo+"\n" ;
     }
 
 
