@@ -1,4 +1,3 @@
-
 public class Servicio {
     private String tipo;
     private float costo;
@@ -6,12 +5,14 @@ public class Servicio {
     private String descripcion;
     private Vehiculo vehiculo;
 
-    public Servicio(String tipo, float costo, String fecha, String descripcion){
+	//LE AGREGUE VEHICULO
+    public Servicio(String tipo, float costo, String fecha, String descripcion, Vehiculo vehiculo){
 
         this.tipo = tipo;
         this.costo = costo;
         this.fecha = fecha;
-        this.descripcion= descripcion;
+        this.descripcion = descripcion;
+		this.vehiculo = vehiculo;
 
     }
 
