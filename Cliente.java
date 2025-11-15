@@ -61,7 +61,7 @@ public class Cliente {
         String info = "";
 
         for(int i =0; i<numVehiculo;i++){
-            info += vehiculos[i].getModelo();
+            info +=  i+1+". "+vehiculos[i].getModelo();
         }
         return info;
     }

@@ -100,79 +100,20 @@ public class Taller {
         this.telefono = telefono;
     }
 
-    public void crearClientenuevo(){
+    public boolean crearClientenuevo(String nombre, String telefono,String correo){
         if(numClientes<100){
 
-
-            String nombre = JOptionPane.showInputDialog("INTRODUZCA EL NOMBRE DEL CLIENTE:\n");
-            String telefono = JOptionPane.showInputDialog("INTRODUZCA EL TELEFONO DEL CLIENTE:\n");
-            String correo = JOptionPane.showInputDialog("INTRODUZCA EL CORRREO DEL CLIENTE:\n");
-
+        
+        
             Cliente nuevo = new Cliente(nombre,telefono,correo);
             clientes[numClientes++] = nuevo;
+            return true;
         }else{
-            JOptionPane.showMessageDialog(null, "CANTIDAD MAXIMA DE CLIENTES");
+            return false;
         }
     }
 
-	public void agregraVehiculoCliente(Cliente cliente){
-		String marca;
-		String modelo;
-		String placa;
-        
-		int opc = Integer.parseInt(JOptionPane.showInputDialog(null,"[1] Auto\n [2] Motocicleta\n"));
 	
-
-		switch (opc) {
-			case 1:
-			
-			
-			marca = JOptionPane.showInputDialog("INTRODUZCA LA MARCA DEL VEHICULO:\n");
-			modelo = JOptionPane.showInputDialog("INTRODUZCA EL MODELO DEL VEJICULO:\n");
-			placa = JOptionPane.showInputDialog("INTRODUZCA EL NUMERO DE PLACA:\n");
-			int numPuertas = Integer.parseInt(JOptionPane.showInputDialog("INTRODUZCA EL NUMERO DE PUERTAS: \n"));
-			String tipoCombustible = JOptionPane.showInputDialog("INTRODUZCA EL TIPO DE COMBUSTIBLE: \n");
-			String tipoMotor = JOptionPane.showInputDialog("INTRODUZCA EL TIPO DE MOTOR: \n");
-			Vehiculo nuevoAuto  = new Auto(numPuertas,tipoCombustible,tipoMotor,marca,modelo,placa,cliente); 
-			vehiculos[numVehiculos++] = nuevoAuto;
-			cliente.agregarVehiculo(nuevoAuto);
-				break;
-			case 2:
-			marca = JOptionPane.showInputDialog("INTRODUZCA LA MARCA DEL VEHICULO:\n");
-			modelo = JOptionPane.showInputDialog("INTRODUZCA EL MODELO DEL VEJICULO:\n");
-			placa = JOptionPane.showInputDialog("INTRODUZCA EL NUMERO DE PLACA:\n");
-		
-			int cilindrada = Integer.parseInt(JOptionPane.showInputDialog("INTRODUZCA LA CILINDRADA: \n"));
-			String tipoCadena = JOptionPane.showInputDialog("INTRODUZCA EL TIPO DE CADENA: \n");
-			Vehiculo nuevaMoto = new Motocicleta(cilindrada, tipoCadena, marca,  modelo,  placa, cliente);
-			vehiculos[numVehiculos++] = nuevaMoto;
-			cliente.agregarVehiculo(nuevaMoto);
-			
-				break;
-		
-			default:
-			JOptionPane.showMessageDialog(null,"OPCION INCORRECTA");
-				break;
-		}
-    }
-	
-	//ESTA FUNCION AGREGA UN SERVICIO NUEVO
-	public void agregarServicioAVehiculo(Vehiculo vehiculo){
-        if(numServicios<256){
-            String tipo = JOptionPane.showInputDialog("TIPO DE SERVICIO:");
-            float costo = Float.parseFloat(JOptionPane.showInputDialog("COSTO:"));
-            String fecha = JOptionPane.showInputDialog("FECHA:");
-			String descripcion = JOptionPane.showInputDialog("DESCRIPCION:");
-			
-            Servicio nuevo = new Servicio(tipo, costo, fecha, descripcion, vehiculo);
-			//AGREGAR EL SERVICIO AL VEHICULO
-			vehiculo.agregarServicio(nuevo);
-			//AGREGAR SERVICIO A LA LISTA DE SERVICIOS DEL TALLER
-            servicios[numServicios++] = nuevo;
-        }else{
-            JOptionPane.showMessageDialog(null, "CANTIDAD MAXIMA DE SERVICIOS");
-        }
-    }
 
     public String desplegarClientes(){
 		//Lo cambie para que solo imprima el nombre y no todos los datos

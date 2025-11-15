@@ -1,4 +1,4 @@
-public class Vehiculo {
+public abstract class Vehiculo {
     protected String marca;
     protected String modelo;
     protected String placa;
@@ -50,9 +50,22 @@ public class Vehiculo {
         this.cliente = cliente;
     }
 
+    ///Mostrar servicios de un heviculo especifico
+    
+    public String mostrarServicios(){
+        String info = "";
+        for(int i=0;i<numServicios;i++){
+            info += i+1+". "+servicios[i].toString();
+        }
+        return info;
+    }
+
 	//HICE ESTA FUNCION PARA AGREGAR SERVICIOS A LA LISTA DE SERVICIOS DEL VEHICULO
 	public void agregarServicio(Servicio s){
-		servicios[numServicios++] = s;
+        if(numServicios<100){
+            servicios[numServicios++] = s;
+        }
+		
 	}
 
     @Override

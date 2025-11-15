@@ -37,20 +37,96 @@ public class Principal {
 				break;
 				//CREAR UN CLIENTE NUEVO
                 case 3:
-					taller.crearClientenuevo();
+
+				String nombre = input("INTRODUZCA EL NOMBRE DEL CLIENTE:\n");
+            	String telefono = input("INTRODUZCA EL TELEFONO DEL CLIENTE:\n");
+            	String correo = input("INTRODUZCA EL CORRREO DEL CLIENTE:\n");
+
+				boolean creado =taller.crearClientenuevo(nombre,telefono,correo);
+				if(creado != false){
+					output("EL CLIENTE SE CREO CORRECTAMENTE");
+				}else{
+					output("SE HA ALCANZADO EL LIMITE DE CLIENTES");
+				}
+
                 break;
 				//AGREGAR VEHICULO A UN CLIENTE
-                case 4:
+                case 4:	
+				///OBTENEMOS EL CLIENTE
+				int ind = Integer.parseInt(input(taller.desplegarClientes()+"\nINTRODUZCA EL INDICE DEL CLINENTE AL QUE DESEA AGREGAR UN VEHICULO\n"));
+				Cliente actual = (taller.getClienteIndice((ind-1) )) ;
+				int  opcion =Integer.parseInt(input("[1] AGREGAR AUTO\n	[2] AGREGAR MOTOCICLETA"));
 
-					agregraVehiculoCliente();
+
+						////ATRIBUTOS DE TODOS LOS VEHICULOS
+						String marca = input("INTRODUZCA LA MARCA DEL VEHICULO:\n");
+						String modelo = input("INTRODUZCA EL MODELO DEL VEJICULO:\n");
+						String placa = input("INTRODUZCA EL NUMERO DE PLACA:\n");
+
+
+				switch (opcion) {
+					case 1:
+						///ATRIBUTROS DE AUTO	
+						
+						int numPuertas = Integer.parseInt(input("INTRODUZCA EL NUMERO DE PUERTAS: \n"));
+						String tipoCombustible = input("INTRODUZCA EL TIPO DE COMBUSTIBLE: \n");
+						String tipoMotor = input("INTRODUZCA EL TIPO DE MOTOR: \n");	
+
+						//CREAMS EL VEHICULO NUEVO
+						Vehiculo actualCarro = new Auto(numPuertas, tipoCombustible, tipoMotor, marca, modelo, placa, actual);
+						actual.agregarVehiculo(actualCarro);
+						taller.agregarVehiculo(actualCarro);
+						break;
+					case 2:
+						int cilindrada = Integer.parseInt(input("INTRODUZCA LA CILINDRADA: \n"));
+						String tipoCadena = input("INTRODUZCA EL TIPO DE CADENA: \n");
+
+						Vehiculo actualMoto = new Motocicleta(cilindrada, tipoCadena, marca, modelo, placa, actual);
+						actual.agregarVehiculo(actualMoto);
+						taller.agregarVehiculo(actualMoto);
+						break;
+				
+					default:
+					output("OPCION ERRONEA");
+						break;
+				}
+
+
+					
                 break;
 				//DESPLEGAR LA LISTA DE VEHICULOS EN EL TALLER
                 case 5:
 					desplegarVehiculos();
                 break;
-				//AGREGAR SERVICIO A UN VEHICULO
+				
+				
+
+				
+
                 case 6:
-					agregarServicioAVehiculo();
+				//AGREGAR SERVICIO A UN VEHICULO
+
+				///OBTENEMOS EL CLIENTE
+				int index = Integer.parseInt(input(taller.desplegarClientes()+"\nINTRODUZCA EL INDICE DEL CLINENTE AL QUE DESEA AGREGAR EL SERVICIOO\n"));
+				Cliente act = taller.getClienteIndice((index-1));
+				
+				int op = Integer.parseInt(input(act.mostrarVehiculos()+"\n"+"INTRODUZCA EL INDICE DEL VEHICULO A AGREGAR EL SERVICIO"));
+				Vehiculo vehiculoServicio = act.getVehiculo((op-1));
+
+				String tipo = input("INTRODUZCA EL TIPO DE SERVICIO");
+            	float costo = Float.parseFloat(input("COSTO:"));
+            	String fecha = input("FECHA:");
+				String descripcion = input("DESCRIPCION:");
+
+				Servicio s  = new Servicio(tipo, costo, fecha, descripcion, vehiculoServicio);
+				vehiculoServicio.agregarServicio(s);
+				taller.agregarServicio(s);
+
+
+
+
+
+					
                 break;
             }
             
@@ -67,7 +143,7 @@ public class Principal {
 			return;
 		}
 		
-		int id = Integer.parseInt(input(taller.desplegarVehiculos()+ "ID: "));
+		int id = Integer.parseInt(input(taller.desplegarVehiculos()+ "SELECCIONE UN VEHICULO ESPECIFICO A CONSULTAR: "));
 		id--;
 		//VALIDAR EL ID
 		if (!taller.indiceVehiculoValido(id)){
@@ -76,7 +152,7 @@ public class Principal {
 			//OBTENER EL VEHICULO
 			Vehiculo v = taller.getVehiculoIndice(id);
 			//IMPRIMIR SUS DATOS
-			output(v.toString());
+			output(v.toString()+ "\nSERVICIOS REALIZADOS: \n"+v.mostrarServicios());
 		}
 	}
 	
@@ -90,7 +166,7 @@ public class Principal {
 			return;
 		}
 		
-		int id = Integer.parseInt(input(taller.desplegarClientes()+ "ID: "));
+		int id = Integer.parseInt(input(taller.desplegarClientes()+ "INDICE DEL CLIENTE A CONSULTAR INFORMACION "));
 		id--;
 		//VALIDAR EL ID
 		if (!taller.indiceValido(id)){
@@ -104,47 +180,6 @@ public class Principal {
 	}
 	
 	
-	
-	public void agregraVehiculoCliente(){
-		//NO HAY CLIENTES
-		if (!taller.hayClientes()){
-			output("NO HAY CLIENTES");
-			return;
-		}
-		
-		int id = Integer.parseInt(input(taller.desplegarClientes()+"SELECCIONA EL CLIENTE:"));
-		id --;
-		//VALIDAR INDICE
-		if(!taller.indiceValido(id)){
-			output("INDICE INVALIDO");
-		}else{
-			//OBTENER EL CLIENTE
-			Cliente c = taller.getClienteIndice(id);
-			//AGREGAR UN VEHICULO AL CLIENTE
-			taller.agregraVehiculoCliente(c);
-		}
-	}
-	
-	
-	public void agregarServicioAVehiculo(){
-		//NO HAY VEHICULOS
-		if (!taller.hayVehiculos()){
-			output("NO HAY VEHICULOS");
-			return;
-		}
-		
-		int id = Integer.parseInt(input(taller.desplegarVehiculos()+ "ID: "));
-		id--;
-		//VALIDAR EL ID
-		if (!taller.indiceVehiculoValido(id)){
-			output("INDICE INVALIDO");
-		}else{
-			//OBTENER EL VEHICULO
-			Vehiculo v = taller.getVehiculoIndice(id);
-			//AGREGARLE UN SERVICIO
-			taller.agregarServicioAVehiculo(v);
-		}
-	}
 	
 
 	//ESTA FUNCION ES PARA NO TENER QUE ESCRIBIR LO DE JOPTION TODO EL RATO
