@@ -1,5 +1,3 @@
-import javax.swing.JOptionPane;
-
 public class Taller {
     private String nombre;
     private String direccion;
@@ -56,7 +54,7 @@ public class Taller {
     }
 	
 	public Vehiculo getVehiculoIndice(int indice) {
-        if(indice>= 0 && indice< numClientes){
+        if(indice>= 0 && indice< numVehiculos){
             return this.vehiculos[indice];
 
         }
@@ -139,7 +137,7 @@ public class Taller {
 	//MUESTRA LOS VEHICULOS REGISTRADOS EN EL TALLER
 	public String desplegarVehiculos(){
 		String info = "";
-		for(int i =0;i< numClientes;i++){
+		for(int i =0;i< numVehiculos;i++){
 			info += (i + 1) + ". "+vehiculos[i].getModelo()+"\n";
 		}
 		return info;

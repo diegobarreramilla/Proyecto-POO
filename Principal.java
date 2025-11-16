@@ -104,29 +104,73 @@ public class Principal {
 				
 
                 case 6:
-				//AGREGAR SERVICIO A UN VEHICULO
-
+				
+				
 				///OBTENEMOS EL CLIENTE
 				int index = Integer.parseInt(input(taller.desplegarClientes()+"\nINTRODUZCA EL INDICE DEL CLINENTE AL QUE DESEA AGREGAR EL SERVICIOO\n"));
 				Cliente act = taller.getClienteIndice((index-1));
+
+
+				if(act !=  null){
+				
+				
+				//AGREGAR SERVICIO A UN VEHICULO
+
+				int tipoServicio = Integer.parseInt(input("[1] CAMBIO DE ACEITE Y FILTRO DE AIRE\n[2] AFINACION\n[3] SERVICIO DE fRENOS COMPLETO\n[4] DIAGNOSTICO ELECTRICO")); 
+
+				
 				
 				int op = Integer.parseInt(input(act.mostrarVehiculos()+"\n"+"INTRODUZCA EL INDICE DEL VEHICULO A AGREGAR EL SERVICIO"));
 				Vehiculo vehiculoServicio = act.getVehiculo((op-1));
 
-				String tipo = input("INTRODUZCA EL TIPO DE SERVICIO");
-            	float costo = Float.parseFloat(input("COSTO:"));
+				
             	String fecha = input("FECHA:");
-				String descripcion = input("DESCRIPCION:");
-
-				Servicio s  = new Servicio(tipo, costo, fecha, descripcion, vehiculoServicio);
-				vehiculoServicio.agregarServicio(s);
-				taller.agregarServicio(s);
+				String nombreMecanico = input("INTRODUZCA EL NOMBRE DEL MECANICO QUE REALIZARA/REALIZO EL SERVICIO");
 
 
+				switch (tipoServicio) {
+					///acxeite
+					case 1:
+						Servicio aceite = new CambioAceite(fecha, nombreMecanico);
+						vehiculoServicio.agregarServicio(aceite);
+						taller.agregarServicio(aceite);
+						
+						break;
+						///afinacion
+					case 2:
+						Servicio afinacion = new Afinacion(fecha, nombreMecanico);
+
+						vehiculoServicio.agregarServicio(afinacion);
+						taller.agregarServicio(afinacion);
+						
+						break;
+						///frenos
+					case 3:
+						Servicio Frenos = new ServicioFrenos(fecha, nombreMecanico);
+
+						vehiculoServicio.agregarServicio(Frenos);
+						taller.agregarServicio(Frenos);
+						
+						break;
+						////electrivo
+					case 4:
+					Servicio electrico = new DiagnosticoElectrico(fecha, nombreMecanico);
+
+					vehiculoServicio.agregarServicio(electrico);
+						taller.agregarServicio(electrico);
+						
+						break;
+					default:
+						break;
+									}
+
+				
+
+					}else{
+						output("ERROR");
+					}
 
 
-
-					
                 break;
             }
             

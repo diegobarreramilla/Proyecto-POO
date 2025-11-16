@@ -42,7 +42,10 @@ public class Cliente {
 	
 	//AGREGUE ESTA FUNCION PARA RETORNAR ALGUN VEHICULO DE LA LISTA DE VEHICULOS
 	public Vehiculo getVehiculo(int id){
+        if(id>=0 && id < numVehiculo){
 		return vehiculos[id];
+        }
+        return null;
 	}
 
     ///agregar vehiculo  la lista de vehiculos de cliente
@@ -61,7 +64,7 @@ public class Cliente {
         String info = "";
 
         for(int i =0; i<numVehiculo;i++){
-            info +=  i+1+". "+vehiculos[i].getModelo();
+            info +=  i+1+". "+vehiculos[i].getModelo()+"\n";
         }
         return info;
     }

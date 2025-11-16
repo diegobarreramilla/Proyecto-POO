@@ -70,7 +70,7 @@ public abstract class Vehiculo {
 
     @Override
     public String toString(){
-        return "\nDUEÑO"+cliente.getNombre()+"\nMARCA: "+marca+"\nMODELO: "+modelo+"\nPLACA: "+placa+"\n";
+        return "\nDUEÑO: "+cliente.getNombre()+"\nMARCA: "+marca+"\nMODELO: "+modelo+"\nPLACA: "+placa+"\n";
     }
     
 }
