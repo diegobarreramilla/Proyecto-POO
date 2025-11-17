@@ -4,14 +4,15 @@ public class Cliente {
     private String nombre;
     private String telefono;
     private String correo;
-    private Vehiculo[] vehiculos = new Vehiculo[10];
-    private int numVehiculo =0;
+    private Vehiculo[] vehiculos;
+    private int numVehiculo;
 
     public Cliente(String nombre, String telefono,String correo){
         this.nombre = nombre;
         this.telefono = telefono;
         this.correo = correo;
-        
+        vehiculos = new Vehiculo[10];
+		numVehiculo = 0;
 
     }
     public String getNombre() {
@@ -64,7 +65,7 @@ public class Cliente {
         String info = "";
 
         for(int i =0; i<numVehiculo;i++){
-            info +=  i+1+". "+vehiculos[i].getModelo()+"\n";
+            info +=  i+1+". "+vehiculos[i].getMarca()+" "+vehiculos[i].getModelo()+"\n";
         }
         return info;
     }

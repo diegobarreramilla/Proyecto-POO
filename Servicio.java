@@ -6,5 +6,4 @@ public interface Servicio {
     String getMecanico();
     String toString();
 
-
 }

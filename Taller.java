@@ -138,11 +138,38 @@ public class Taller {
 	public String desplegarVehiculos(){
 		String info = "";
 		for(int i =0;i< numVehiculos;i++){
-			info += (i + 1) + ". "+vehiculos[i].getModelo()+"\n";
+			info += (i + 1) + ". "+ vehiculos[i].getMarca()+" "+vehiculos[i].getModelo()+"\n";
 		}
 		return info;
 	}
 	
+	
+	//Aqui hice polimorfismo
+	public String mostrarAutos(){
+		String cadena = "";
+		int j = 1;
+		for ( Vehiculo v : vehiculos){
+			if (v instanceof Auto){
+				cadena += j+". "+ v.getMarca() +" "+ v.getModelo()+"\n";
+				j++;
+			}
+		}
+		return cadena;
+	}
+	
+	public String mostrarMotocicletas(){
+		String cadena = "";
+		int j = 1;
+		for ( Vehiculo v : vehiculos){
+			if (v instanceof Motocicleta){
+				cadena += j+". "+ v.getMarca() +" "+ v.getModelo()+"\n";
+				j++;
+			}
+		}
+		return cadena;
+	}
+	
+
 	//Separe esta funcion en 2 con la de hayClientes y las hice boolean
     public boolean indiceValido(int indice){
 		return numClientes > indice;
@@ -161,10 +188,25 @@ public class Taller {
 		return numVehiculos > indice;
 	}
     
-
+	
+	@Override
+	public String toString(){
+		
+		String cadena = "";
+		cadena += "===================\n";
+		cadena += "    "+nombre+"    \n";
+		cadena += "    "+direccion+"    \n";
+		cadena += "    "+telefono+"    \n";
+		cadena += "===================\n";
+		
+		return cadena;
+	}
+	
+	/* toString Antiguo
     @Override
     public String toString(){
         return "NOMBRE DE TALLER: "+nombre+"\nDIRECCION: "+direccion+"\nTELEFONO: "+telefono+"\n";
     }
+	*/
   
 }

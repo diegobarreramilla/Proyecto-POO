@@ -2,12 +2,23 @@ public class Motocicleta extends Vehiculo{
     protected int cilindrada;
     protected String tipoCadena;
 
+
+	//Cambie el constructor
+    public Motocicleta(Cliente cliente, String marca, String modelo, String placa, String tipoCadena, int cilindrada){
+        super(marca,modelo,placa,cliente);
+        this.cilindrada = cilindrada;
+        this.tipoCadena = tipoCadena;
+
+    }
+
+	/* Contructor de antes
     public Motocicleta(int cilindrada, String tipoCadena,String marca, String modelo, String placa,Cliente cliente){
         super(marca,modelo,placa,cliente);
         this.cilindrada = cilindrada;
         this.tipoCadena = tipoCadena;
 
     }
+	*/
 
     public int getCilindrada() {
         return this.cilindrada;

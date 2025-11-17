@@ -3,6 +3,17 @@ public class Auto extends Vehiculo{
     protected String tipoCombustible;
     protected String tipoMotor;
 
+
+	// Cambie el constructor
+    public Auto (Cliente cliente, String marca, String modelo, String placa, String tipoMotor, String tipoCombustible, int numPuertas){
+        super(marca,modelo,placa,cliente);
+        this.tipoCombustible = tipoCombustible;
+        this. tipoMotor = tipoMotor;
+        this.numPuertas = numPuertas;
+
+    }
+	
+	/* Constructor de antes
     public Auto (int numPuertas, String tipoCombustible, String tipoMotor,String marca, String modelo, String placa,Cliente cliente){
         super(marca,modelo,placa,cliente);
         this.tipoCombustible = tipoCombustible;
@@ -10,8 +21,8 @@ public class Auto extends Vehiculo{
         this.numPuertas = numPuertas;
 
     }
+	*/
     
-
     public int getNumPuertas() {
         return this.numPuertas;
     }
