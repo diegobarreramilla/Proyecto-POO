@@ -19,7 +19,7 @@ public class Principal {
 			
 			
             opc = Integer.parseInt(input(
-			taller.toString()+
+			taller.toString()+"\n[1] MOSTRAR INFORMACION TALLER\n"+
             "[2] MOSTRAR INFORMACION DE CLIENTE\n"+
             "[3] CREAR CLIENTE NUEVO\n"+
             "[4] AGREGAR NUEVO VEHICULO A CLIENTE\n"+
