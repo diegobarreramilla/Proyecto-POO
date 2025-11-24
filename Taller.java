@@ -8,6 +8,11 @@ public class Taller {
     private int numClientes;
     private Servicio[] servicios = new Servicio[256];
     private int numServicios;
+	
+	//Valores definidos del taller
+	public static String[] mecanicos = {"Omar", "Jesus", "Francisco", "Octavio", "Cirilo"};
+	public static String[] tiposAceite = {"Mineral", "Semisintetico", "Sintetico"};
+	public static String[] complejidades = {"Baja", "Media", "Alta"};
 
     public Taller(String nombre, String direccion,String telefono){
         this.nombre = nombre;

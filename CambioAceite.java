@@ -1,35 +1,27 @@
-public class CambioAceite implements Servicio{
+import java.time.LocalDate;
+public class CambioAceite extends Servicio{
 
-    private String tipo = "CAMBIO DE ACEITE ";
-    private float precio;
-    private String fecha;
-    private String NombreMecanico; 
+	private String tipoAceite;
+	private float litros;
+	private float costoLitro;
+	
+	public CambioAceite(String tipoAceite, float litros, float costoLitro, String mecanico){
+        super("Cambio de Aceite", 550, mecanico);
+		
+		this.tipoAceite = tipoAceite;
+		this.litros = litros;
+		this.costoLitro = costoLitro;
+		
+		fecha = LocalDate.now().toString();
+    }
+	
+	@Override
+	public void calcularCosto(){
+		costo = costo + (litros * costoLitro);
+	}
+	
+	public void realizarServicio(){
+		System.out.println("Realizando cambio de aceite con aceite " + tipoAceite);
+	}
 
-    public CambioAceite(String fecha,String descripcion){
-        this.precio =  550;
-        this.fecha = fecha;
-        this.NombreMecanico = descripcion;
-
-    }
-    @Override
-    public String getFecha(){
-        return fecha;
-    }
-    @Override
-    public String getMecanico(){
-        return NombreMecanico;
-    }
-    @Override
-    public float getPrecio(){
-        return precio;
-    }
-    @Override
-    public String getTipo(){
-        return tipo;
-    }
-    @Override
-    public String toString(){
-        return tipo+"\n"+ "NOMBRE DEL MECANICO: "+NombreMecanico+"\n" +"PRECIO: "+precio+"\n"+"FECHA: "+fecha;
-        }
-    
 }

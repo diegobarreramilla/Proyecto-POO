@@ -1,5 +1,6 @@
-public class Auto extends Vehiculo{
-    protected int numPuertas;
+public class Auto extends Vehiculo implements Reparable{
+    
+	protected int numPuertas;
     protected String tipoCombustible;
     protected String tipoMotor;
 
@@ -46,6 +47,18 @@ public class Auto extends Vehiculo{
     public void setTipoMotor(String tipoMotor) {
         this.tipoMotor = tipoMotor;
     }
+
+    @Override
+    public void diagnosticar() {
+        diagnostico = "Ruidos en motor y desgaste en frenos.";
+        System.out.println("Diagnosticando automóvil...");
+    }
+	
+	@Override
+    public void reparar() {
+        System.out.println("Reparando automóvil: ajustes en motor y frenos.");
+    }
+
 
     @Override
     public String toString(){

@@ -2,6 +2,7 @@ public abstract class Vehiculo {
     protected String marca;
     protected String modelo;
     protected String placa;
+	protected String diagnostico;
     //// cliente al que pertenece
     protected Cliente cliente;
     protected Servicio[] servicios;

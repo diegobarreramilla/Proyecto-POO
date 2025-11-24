@@ -1,4 +1,5 @@
-public class Motocicleta extends Vehiculo{
+public class Motocicleta extends Vehiculo implements Reparable{
+
     protected int cilindrada;
     protected String tipoCadena;
 
@@ -35,6 +36,18 @@ public class Motocicleta extends Vehiculo{
     public void setTipoCadena(String tipoCadena) {
         this.tipoCadena = tipoCadena;
     }
+	
+	@Override
+    public void diagnosticar() {
+        diagnostico = "Cadena floja y fuga ligera de aceite.";
+        System.out.println("Diagnosticando motocicleta...");
+    }
+	
+	@Override
+    public void reparar() {
+        System.out.println("Ajustando cadena y corrigiendo fuga de aceite.");
+    }
+	
     
     @Override
     public String toString(){

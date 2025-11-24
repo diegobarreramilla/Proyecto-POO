@@ -1,34 +1,29 @@
-public class ServicioFrenos implements Servicio{
-    private String tipo = "SERVICIO DE FRENOS";
-    private float precio;
-    private String fecha;
-    private String NombreMecanico; 
+import java.time.LocalDate;
+public class ServicioFrenos extends Servicio{
+	
+	private boolean incluyePurgado;
+	private boolean cambiaPastillas;
+	
 
-    public ServicioFrenos(String fecha,String nombre){
-        this.precio =  1050;
-        this.fecha = fecha;
-        this.NombreMecanico = nombre;
-
+    public ServicioFrenos(boolean incluyePurgado, boolean cambiaPastillas, String mecanico){
+		
+		super("Servicio de frenos", 1050, mecanico);
+		this.incluyePurgado = incluyePurgado;
+		this.cambiaPastillas = cambiaPastillas;
+		
+		fecha = LocalDate.now().toString();
     }
-    @Override
-    public String getFecha(){
-        return fecha;
+	
+	@Override
+    public void calcularCosto() {
+        float total = costo;
+        if (incluyePurgado) total += 200;
+        if (cambiaPastillas) total += 350;
+        costo = total;
     }
-    @Override
-    public String getMecanico(){
-        return NombreMecanico;
-    }@Override
-    public float getPrecio(){
-        return precio;
-    }
-    @Override
-    public String getTipo(){
-        return tipo;
-    }
-    @Override
-    public String toString(){
-        return tipo+"\n"+ "NOMBRE DEL MECANICO: "+NombreMecanico+"\n" +"PRECIO: "+precio+"\n"+"FECHA: "+fecha;
-        }
-
-    
+	
+	@Override
+	public void realizarServicio(){
+		System.out.println("Realizando servicio de frenos...");
+	}
 }

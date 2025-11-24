@@ -1,34 +1,42 @@
-public class DiagnosticoElectrico implements Servicio{
-    private String tipo = "DIAGNOSTICO ELECTRICO";
-    private float precio;
-    private String fecha;
-    private String NombreMecanico; 
-
-    public DiagnosticoElectrico(String fecha,String nombre){
-        this.precio =  750;
-        this.fecha = fecha;
-        this.NombreMecanico = nombre;
-
-    }
-    @Override
-    public String getFecha(){
-        return fecha;
-    }
-    @Override
-    public String getMecanico(){
-        return NombreMecanico;
-    }
-    @Override
-    public float getPrecio(){
-        return precio;
-    }
-    @Override
-    public String getTipo(){
-        return tipo;
-    }
-    @Override
-    public String toString(){
-        return tipo+"\n"+ "NOMBRE DEL MECANICO: "+NombreMecanico+"\n" +"PRECIO: "+precio+"\n"+"FECHA: "+fecha;
-        }
+import java.time.LocalDate;
+public class DiagnosticoElectrico extends Servicio{
     
+	private boolean usaScanner;
+	private String complejidad;
+	
+	
+	public DiagnosticoElectrico(boolean usaScanner, String complejidad, String mecanico){
+		
+		super("Diagnostico Electrico", 750, mecanico);
+		this.usaScanner = usaScanner;
+		this.complejidad = complejidad;
+		
+		fecha = LocalDate.now().toString();
+	}
+
+	public void calcularCosto() {
+        float total = costo;
+
+        if (usaScanner) total += 250;
+
+        switch (complejidad.toLowerCase()) {
+            case "bajo":
+                total += 200;
+                break;
+            case "medio":
+                total += 400;
+                break;
+            case "alto":
+                total += 700;
+                break;
+        }
+
+        costo = total;
+    }
+
+    @Override
+    public void realizarServicio() {
+        System.out.println("Realizando diagnóstico eléctrico (" + complejidad + ")");
+    }
+
 }

@@ -19,7 +19,8 @@ public class Principal {
 			
 			
             opc = Integer.parseInt(input(
-			taller.toString()+"\n[1] MOSTRAR INFORMACION TALLER\n"+
+			taller.toString()+
+			"\n[1] MOSTRAR INFORMACION TALLER\n"+
             "[2] MOSTRAR INFORMACION DE CLIENTE\n"+
             "[3] CREAR CLIENTE NUEVO\n"+
             "[4] AGREGAR NUEVO VEHICULO A CLIENTE\n"+
@@ -114,7 +115,7 @@ public class Principal {
                 case 8:
 				
 				///OBTENEMOS EL CLIENTE
-				int index = Integer.parseInt(input(taller.desplegarClientes()+"\nINTRODUZCA EL INDICE DEL CLINENTE AL QUE DESEA AGREGAR EL SERVICIOO\n"));
+				int index = Integer.parseInt(input(taller.desplegarClientes()+"\nINTRODUZCA EL INDICE DEL CLINENTE AL QUE DESEA AGREGAR EL SERVICIO\n"));
 				Cliente act = taller.getClienteIndice((index-1));
 
 
@@ -131,38 +132,84 @@ public class Principal {
 				Vehiculo vehiculoServicio = act.getVehiculo((op-1));
 
 				
-            	String fecha = input("FECHA:");
-				String nombreMecanico = input("INTRODUZCA EL NOMBRE DEL MECANICO QUE REALIZARA/REALIZO EL SERVICIO");
-
+            	
+				int indiceMecanico = (int) (Math.random() * 5);
+				String nombreMecanico = taller.mecanicos[indiceMecanico];
 
 				switch (tipoServicio) {
-					///acxeite
+					///aceite
 					case 1:
-						Servicio aceite = new CambioAceite(fecha, nombreMecanico);
+					
+						
+						int indiceAceite = (int) (Math.random() * 3);
+						String tipoAceite = taller.tiposAceite[indiceAceite];
+						
+						float costoLitro;
+						if (indiceAceite == 0) costoLitro = 104;
+						else if (indiceAceite == 1) costoLitro = 159;
+						else costoLitro = 249;
+						
+						int cantLitros = (int) (Math.random() * 8 + 3);
+						
+						Servicio aceite = new CambioAceite(tipoAceite, cantLitros, costoLitro, nombreMecanico);
+						aceite.calcularCosto();
+						aceite.realizarServicio();
+						
 						vehiculoServicio.agregarServicio(aceite);
 						taller.agregarServicio(aceite);
+						
+						
 						
 						break;
 						///afinacion
 					case 2:
-						Servicio afinacion = new Afinacion(fecha, nombreMecanico);
-
+					
+						boolean cambioBujias, limpiezaAceleracion, cambioFiltroAire, limpiezaInyectores;
+						
+						cambioBujias =  (Math.random() < 0.5);
+						limpiezaAceleracion =  (Math.random() < 0.5);
+						cambioFiltroAire =  (Math.random() < 0.5);
+						limpiezaInyectores = (Math.random() < 0.5);
+						
+						Servicio afinacion = new Afinacion(cambioBujias, limpiezaAceleracion, cambioFiltroAire, limpiezaInyectores, nombreMecanico);
+						afinacion.calcularCosto();
+						afinacion.realizarServicio();
+	
 						vehiculoServicio.agregarServicio(afinacion);
 						taller.agregarServicio(afinacion);
 						
 						break;
 						///frenos
 					case 3:
-						Servicio Frenos = new ServicioFrenos(fecha, nombreMecanico);
+						boolean incluyePurgado, cambioPastillas;
+						
+						incluyePurgado =  (Math.random() < 0.5);
+						cambioBujias =  (Math.random() < 0.5);		
+						
+						Servicio frenos = new ServicioFrenos(incluyePurgado, cambioBujias, nombreMecanico);
+						frenos.calcularCosto();
+						frenos.realizarServicio();
+						
 
-						vehiculoServicio.agregarServicio(Frenos);
-						taller.agregarServicio(Frenos);
+						vehiculoServicio.agregarServicio(frenos);
+						taller.agregarServicio(frenos);
 						
 						break;
 						////electrivo
 					case 4:
-						Servicio electrico = new DiagnosticoElectrico(fecha, nombreMecanico);
 
+						int indiceComplejidad;
+						boolean usaScanner;
+						
+						indiceComplejidad = (int) (Math.random() * 3);
+						usaScanner =  (Math.random() < 0.5);
+						
+						String complejidad = taller.complejidades[indiceComplejidad];
+					
+						Servicio electrico = new DiagnosticoElectrico(usaScanner, complejidad, nombreMecanico);
+						electrico.calcularCosto();
+						electrico.realizarServicio();
+						
 						vehiculoServicio.agregarServicio(electrico);
 						taller.agregarServicio(electrico);
 						break;
@@ -277,6 +324,7 @@ public class Principal {
 		taller.agregarVehiculo(vehiculo8);
 		taller.agregarVehiculo(vehiculo9);
 		taller.agregarVehiculo(vehiculo10);
+		
 		
 	}
 	
